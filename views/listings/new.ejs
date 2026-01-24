@@ -1,0 +1,85 @@
+<%layout('layouts/boilerplate')-%>
+<body>
+    <div class="row">
+        <div class="col-sm-8 offset-sm-2">
+        <h2>Add Listing</h2>
+        <br>
+        <form method="POST" action="/listings" novalidate class=" needs-validation" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input name="listing[title]" class="form-control" type="text" placeholder="enter a catchy title" required>
+                <div class="invalid-feedback">Title should be valid</div>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea name="listing[description]" class="form-control" required></textarea>
+                <div class="invalid-feedback">Please enter short description</div>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Image</label>
+                <input name='listing[image]' type="file" accept="image/*" class="form-control" required>
+                <div class="invalid-feedback">Upload Listing Image</div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="price" class="form-label">Price</label>
+                    <input name="listing[price]" type="number"  placeholder="2000" class="form-control" required>
+                    <div class="invalid-feedback">Price required</div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="category" class="form-label">Category</label>
+                    <select name="listing[category]" id="category" class="form-select" required>
+                        <option value="">--select category--</option>
+                        <option value="trending">Trending</option>
+                        <option value="rooms">Rooms</option>
+                        <option value="mountains">Mountains</option>
+                        <option value="iconic-cities">Iconic Cities</option>
+                        <option value="child-care">Child Care</option>
+                        <option value="family">Family</option>
+                        <option value="farm">Farm</option>
+                        <option value="arctic">Arctic</option>
+                        <option value="boats">Boats</option>
+                        <option value="hiking">Hiking</option>
+                        <option value="adventure">Adventure</option>
+                        <option value="pub">Pub</option>
+                    </select>
+                    <div class="invalid-feedback">Listing category required</div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="location" class="form-label">Location</label>
+                    <input name="listing[location]" type="text" placeholder="Banglore, Karnataka" class="form-control" required>
+                    <div class="invalid-feedback">Location should be valid</div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="country" class="form-label">Country</label>
+                    <input name="listing[country]" type="text" placeholder="India" class="form-control" required>
+                    <div class="invalid-feedback">Country name should be valid</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                
+            </div>
+            <button class="btn btn-dark add-btn">Add</button>
+            <br><br>
+        </form>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const imageInput = document.querySelector("input[name='listing[image]']");
+            if (!imageInput) return;  
+
+            imageInput.addEventListener("change", (e) => {
+                if (e.target.files[0] && e.target.files[0].size > 2 * 1024 * 1024) {
+                alert("Image must be less than 2 MB");
+                e.target.value = "";
+                }
+            });
+        });
+    </script>
+</body>

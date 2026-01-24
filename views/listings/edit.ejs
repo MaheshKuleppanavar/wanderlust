@@ -1,0 +1,58 @@
+<%- layout('layouts/boilerplate')%>
+<body>
+    <div class="row">
+        <div class="col-sm-8 offset-sm-2">
+            <h2 class="mt-4">Edit your listing</h2>
+            <form method="POST" enctype="multipart/form-data" action="/listings/<%= listing._id%>?_method=PUT" novalidate class="needs-validation">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input name="listing[title]" type="text" value="<%= listing.title%>" class="form-control" required>
+                    <div class="invalid-feedback">Title should be valid</div>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="listing[description]" class="form-control" required><%= listing.description%></textarea>
+                    <div class="invalid-feedback">Please enter short description</div>
+                </div>
+                <div class="mb-3">
+                    <p>Original Image</p>
+                    <img width="250px" height="300px" src="<%= originalImgUrl%>" alt="">
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label" alt="listing-image" accept="image/*">Upload new image</label>
+                    <input name='listing[image]' type="file" class="form-control" accept="image/*">
+                    <div class="invalid-feedback">Image required</div>
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price</label>
+                    <input name="listing[price]" type="number" value="<%= listing.price%>" class="form-control" required>
+                    <div class="invalid-feedback">Price should be valid</div>
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location</label>
+                    <input name="listing[location]" type="text" value="<%= listing.location%>" class="form-control" required>
+                    <div class="invalid-feedback">Location should be valid</div>
+                </div>
+                <div class="mb-3">
+                    <label for="country" class="form-label">Country</label>
+                    <input name="listing[country]" type="text" value="<%= listing.country%>" class="form-control" required>
+                    <div class="invalid-feedback">Country should be valid</div>
+                </div>                     
+                <button class="btn btn-dark edit-btn">Submit</button><br><br>
+         </form>
+        </div>
+    </div>
+<script>
+     document.addEventListener("DOMContentLoaded", () => {
+            const imageInput = document.querySelector("input[name='listing[image]']");
+            if (!imageInput) return;  
+
+            imageInput.addEventListener("change", (e) => {
+                if (e.target.files[0] && e.target.files[0].size > 2 * 1024 * 1024) {
+                alert("Image must be less than 2 MB");
+                e.target.value = "";
+                }
+            });
+        });
+</script>    
+</body>

@@ -1,0 +1,80 @@
+<% layout('layouts/boilerplate') -%>
+<body>
+<div class="d-md-none mb-2">
+    <button class="btn btn-outline-dark w-100"
+            data-bs-toggle="collapse"
+            data-bs-target="#filterSection">
+        Filters & Categories
+    </button>
+</div>
+<div id="filterSection" class="collapse d-md-block">
+    <div class="d-flex align-items-center gap-4 flex-wrap flex-md-nowrap overflow-auto py-2">
+        <a class="filter text-center" href="/listings?filter=trending">
+            <i class="fa-solid fa-fire"></i><p>Trending</p>
+        </a>
+        <a class="filter text-center" href="/listings?filter=rooms">
+            <i class="fa-solid fa-bed"></i><p>Rooms</p>
+        </a>
+        <a class="filter text-center" href="/listings?filter=mountains">
+            <i class="fa-solid fa-mountain"></i><p>Mountains</p>
+        </a>
+        <a class="filter text-center" href="/listings?filter=iconic-cities">
+            <i class="fa-solid fa-city"></i><p>Iconic Cities</p>
+        </a>
+        <a class="filter text-center" href="/listings?filter=child-care">
+            <i class="fa-solid fa-baby"></i><p>Child Care</p>
+        </a>
+        <a class="filter text-center" href="/listings?filter=family">
+            <i class="fa-solid fa-users"></i><p>Family</p>
+        </a>
+        <a class="filter text-center" href="/listings?filter=farm">
+            <i class="fa-solid fa-tractor"></i><p>Farm</p>
+        </a>
+        <a class="filter text-center" href="/listings?filter=arctic">
+            <i class="fa-solid fa-snowflake"></i><p>Arctic</p>
+        </a>
+        <a class="filter text-center" href="/listings?filter=boats">
+            <i class="fa-solid fa-ship"></i><p>Boats</p>
+        </a>
+        <a class="filter text-center" href="/listings?filter=hiking">
+            <i class="fa-solid fa-person-hiking"></i><p>Hiking</p>
+        </a>
+        <a class="filter text-center" href="/listings?filter=adventure">
+            <i class="fa-solid fa-group-arrows-rotate"></i><p>Adventure</p>
+        </a>
+        <a class="filter text-center" href="/listings?filter=pub">
+            <i class="fa-solid fa-martini-glass"></i><p>Pub</p>
+        </a>
+        <div class="ms-md-auto tax-toggle">
+            <div class="form-check form-switch m-0">
+                <input class="form-check-input" type="checkbox" id="switchCheckDefault">
+                <label class="form-check-label ms-1" for="switchCheckDefault">
+                    Total after tax
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 mt-3">
+<% if(listings && listings.length === 0){ %>
+    <h3 class="text-danger m-auto text-center">No Listings Found!</h3>
+<% } %>
+<% for(let listing of listings){ %>
+<div class="col">
+    <a href="/listings/<%= listing._id %>" class="text-decoration-none text-dark">
+        <div class="card listing-card h-100 shadow-sm">
+            <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image">
+            <div class="card-body">
+                <p class="card-text mb-0">
+                    <b><%= listing.title %></b><br>
+                    ₹<span class="price"><%= listing.price.toLocaleString('en-IN') %></span> / night
+                    <span class="tax_info display">&nbsp;+18% GST</span>
+                </p>
+            </div>
+        </div>
+    </a>
+</div>
+<% } %>
+</div>
+</body>
