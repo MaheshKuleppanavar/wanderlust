@@ -1,16 +1,3 @@
-Nice work, Mahesh 👏
-Your project looks **clean, feature-rich, and very presentable**. Based on:
-
-* your **GitHub repo structure**
-* the **live deployment**
-* the **updated UI (categories, cards, search)**
-* **no map integration**
-* and that you’ll **provide a demo video**
-
-Here’s a **production-ready README.md** you can directly paste into your repo.
-
----
-
 ## 🌍 Wanderlust – Airbnb-like Property Listing Platform
 
 Wanderlust is a full-stack web application inspired by Airbnb that allows users to explore, list, and review properties across India. The platform supports authentication, image uploads, category-based filtering, and user-generated reviews, all deployed on a cloud infrastructure.
