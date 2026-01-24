@@ -7,7 +7,9 @@
   "description": "Let's create our first wanderlust major project which is similar to airbnb website.\r Goal is to make website that allows user to list theirhotel, house and properties in website.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev":"nodemon app.js"
   },
   "keywords": [],
   "author": "",
