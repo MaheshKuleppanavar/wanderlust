@@ -19,7 +19,10 @@ const listingRouter = require('./routes/listings.js');
 const reviewRouter = require('./routes/reviews.js');
 const userRouter = require('./routes/user.js');
 
-const dbUrl = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/wanderlust';
+const dbUrl =
+  process.env.NODE_ENV === "production"
+    ? process.env.MONGO_URI_PROD
+    : process.env.MONGO_URI_LOCAL;
 
 const PORT = process.env.PORT || 8080;
 
