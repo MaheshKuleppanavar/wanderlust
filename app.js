@@ -19,7 +19,7 @@ const listingRouter = require('./routes/listings.js');
 const reviewRouter = require('./routes/reviews.js');
 const userRouter = require('./routes/user.js');
 
-const dbUrl = process.env.MONGO_URI;
+const dbUrl = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/wanderlust';
 
 const PORT = process.env.PORT || 8080;
 
@@ -28,7 +28,7 @@ app.listen(PORT, () => {
 });
 
 mongoose.connect(dbUrl)
-.then(() => console.log('Connected to MongoDB Atlas 🔗'))
+.then(() => console.log('Connected Successfully 🔗'))
 .catch(err => console.log('Mongo connection error:', err));
 
 app.set('view engine', 'ejs');
